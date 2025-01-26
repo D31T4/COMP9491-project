@@ -1,0 +1,44 @@
+Directions:
+
+1. Run preprocessing_tocsv.py to populate the datasets/train_val_no_split folder
+2. Run preprocessing_train_val_split.py to take the data in datasets/train_val_no_split and split it into the following
+4 folders:
+
+    - datasets/Tianjin
+    - datasets/Tianjin_1
+    - datasets/Tianjin_2
+    - datasets/Tianjin_3
+
+The following datasets have been implemented.
+
+1. Baseline SIND Dataset (Tianjin folder)
+    - Baseline established for SIND dataset
+    - Parameters controlled in main function:
+        - {'name': 'Tianjin', 'train_ratio': 0.7, 'val_ratio': 0.2, 'seed': 42},
+
+2. Vulnerable participants dataset (Tianjin_1 folder)
+    - Filter added to include only vulnerable participants in the test set.
+    - Vulnerable participants are defined as class 0, 4, 5 and 6.
+
+3. Nullified traffic encoder (Tianjin_2 folder)
+    - Filter added to nullify the traffic signal encoder in the test set.
+    - Traffic signal encoder is defined as class 1. All signals for the encoder set to 0 (i.e. red) across all data sets
+    - Traffic signal corresponds to last row (encoded_traffic_signal) in the dataset
+
+
+Notes on data:
+
+- Output should have the following 12 columns (in order)
+
+frame_id
+track_id
+x
+y
+vx
+vy
+ax
+ay
+length
+width
+agent_type
+encoded_traffic_signal
